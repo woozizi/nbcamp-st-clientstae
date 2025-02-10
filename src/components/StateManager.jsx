@@ -6,19 +6,23 @@ import {
   StyledButton,
   ButtonGroup,
 } from "../styles/StyledComponents";
+import { useDispatch } from "react-redux";
+import { clearMessage, setMessage } from "../redux/messageSlice";
 
-function StateControl({ onMessageChange }) {
+function StateControl() {
   const [inputValue, setInputValue] = useState("");
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onMessageChange(inputValue);
+    // onMessageChange(inputValue);
+    dispatch(setMessage(inputValue));
     setInputValue("");
   };
 
   const handleReset = () => {
     setInputValue("");
-    onMessageChange("");
+    dispatch(clearMessage(inputValue));
   };
 
   return (
@@ -41,9 +45,5 @@ function StateControl({ onMessageChange }) {
     </StateControlWrapper>
   );
 }
-
-StateControl.propTypes = {
-  onMessageChange: PropTypes.func.isRequired,
-};
 
 export default StateControl;

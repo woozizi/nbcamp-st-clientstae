@@ -1,10 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import reducer from "./messageSlice";
+import messageReducer from "../redux/messageSlice";
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     message: messageReducer,
   },
 });
-
-export default store;
