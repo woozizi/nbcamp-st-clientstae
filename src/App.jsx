@@ -6,24 +6,22 @@ import {
   Content,
   DeepStructure,
 } from "./styles/StyledComponents";
-import MessageContext from "./context/Messagecontext";
+import { MessageProvider } from "./context/MessageContext";
 
 // prop drilling 브랜치
 function App() {
-  const [message, setMessage] = useState("");
-
   return (
-    <AppContainer>
-      <h2>[내배캠] 스탠다드반 프로젝트 - Prop Drilling 예제</h2>
-      <MessageContext.Provider value={{ message, onMessageChange: setMessage }}>
+    <MessageProvider>
+      <AppContainer>
+        <h2>[내배캠] 스탠다드반 프로젝트 - Prop Drilling 예제</h2>
         <Content>
           <StateControl />
           <DeepStructure>
             <Level1 />
           </DeepStructure>
         </Content>
-      </MessageContext.Provider>
-    </AppContainer>
+      </AppContainer>
+    </MessageProvider>
   );
 }
 

@@ -4,7 +4,8 @@ import {
   MessageDisplayWrapper,
 } from "../styles/StyledComponents";
 import { useContext } from "react";
-import MessageContext from "../context/Messagecontext";
+
+import { MessageContext } from "../context/MessageContext";
 
 function Level1() {
   return (
