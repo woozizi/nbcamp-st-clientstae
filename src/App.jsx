@@ -6,6 +6,7 @@ import {
   Content,
   DeepStructure,
 } from "./styles/StyledComponents";
+import MessageContext from "./context/Messagecontext";
 
 // prop drilling 브랜치
 function App() {
@@ -14,12 +15,14 @@ function App() {
   return (
     <AppContainer>
       <h2>[내배캠] 스탠다드반 프로젝트 - Prop Drilling 예제</h2>
-      <Content>
-        <StateControl onMessageChange={setMessage} />
-        <DeepStructure>
-          <Level1 message={message} />
-        </DeepStructure>
-      </Content>
+      <MessageContext.Provider value={{ message, onMessageChange: setMessage }}>
+        <Content>
+          <StateControl />
+          <DeepStructure>
+            <Level1 />
+          </DeepStructure>
+        </Content>
+      </MessageContext.Provider>
     </AppContainer>
   );
 }
